@@ -26,21 +26,22 @@
             userMessageDiv.textContent = userInput;
             chatBox.appendChild(userMessageDiv);
             
-            fetch("/get", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: new URLSearchParams({
-                    "msg": userInput
-                })
+            fetch(`/get?msg=${encodeURIComponent(userInput)}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
             })
-            .then(response => response.json())
             .then(data => {
+                console.log('Received data:', data);
                 const botMessageDiv = document.createElement("div");
                 botMessageDiv.classList.add("message", "bot-message");
                 botMessageDiv.textContent = data.response;
                 chatBox.appendChild(botMessageDiv);
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
             });
             
             document.getElementById("user-input").value = "";
