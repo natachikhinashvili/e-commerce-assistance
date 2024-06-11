@@ -16,7 +16,7 @@ def search():
     app.logger.info(f"Received user input: {user_input}")
     result = search_products(user_input, tfidf_matrix, vectorizer, df)
 
-    response_text = f"Top result for you :\n{result['Product Name']} - {result['Selling Price']} - {result['Product Url']}"
+    response_text = f"Top result for you :\n{result['Product Name']} - {result['Selling Price']} - {result['Product Url']} - {result['Image']}"
 
     app.logger.info(f"Response: {response_text}")
     return jsonify(response=response_text)

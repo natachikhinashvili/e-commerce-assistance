@@ -38,6 +38,15 @@
                 const botMessageDiv = document.createElement("div");
                 botMessageDiv.classList.add("message", "bot-message");
                 botMessageDiv.textContent = data.response;
+                pattern =  /https:\/\/images-na\.ssl-images-amazon\.com[^\s]+/;
+                match = data.response.match(pattern); 
+
+                if (match) {
+                    const imageElement = document.createElement("img");
+                    imageElement.src = match[0];
+                    imageElement.alt = "Image";
+                    botMessageDiv.appendChild(imageElement);
+                }
                 chatBox.appendChild(botMessageDiv);
             })
             .catch(error => {
