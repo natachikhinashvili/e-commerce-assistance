@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="container">
+    <div id="messageInput" class="container">
         <h1>Chat with the Bot</h1>
         <div class="chat-box" id="chat-box">
             <div class="message bot-message">Hello! How can I assist you today?</div>
@@ -17,7 +17,7 @@
     </div>
 
     <script>
-        document.getElementById("send-button").addEventListener("click", function() {
+        function handlesending(){
             const userInput = document.getElementById("user-input").value;
             const chatBox = document.getElementById("chat-box");
             
@@ -25,7 +25,6 @@
             userMessageDiv.classList.add("message", "user-message");
             userMessageDiv.textContent = userInput;
             chatBox.appendChild(userMessageDiv);
-            
             fetch(`/get?msg=${encodeURIComponent(userInput)}`)
             .then(response => {
                 if (!response.ok) {
@@ -54,6 +53,15 @@
             });
             
             document.getElementById("user-input").value = "";
+        }
+        document.getElementById("messageInput").addEventListener("keydown", function(event) {
+            if (event.keyCode === 13 && !event.shiftKey) { 
+                event.preventDefault();
+                handlesending()
+            }
+        });
+        document.getElementById("send-button").addEventListener("click", function() {
+            handlesending()
         });
     </script>
 </body>
