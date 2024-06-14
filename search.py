@@ -5,7 +5,7 @@ import pandas as pd
 def search_products(query, tfidf_matrix, vectorizer, df, pricerange=float('inf')):
     df['Selling Price'] = df['Selling Price'].astype(str)
     df['Selling Price'] = df['Selling Price'].str.replace('$', '').str.replace(',', '')
-    
+
     df['Selling Price'] = pd.to_numeric(df['Selling Price'], errors='coerce')
 
     df_filtered = df[df['Selling Price'] <= pricerange]
@@ -26,7 +26,7 @@ def search_products(query, tfidf_matrix, vectorizer, df, pricerange=float('inf')
     formatted_price = f"${result['Selling Price']:.2f}"
     response_text = (
         f"Top result for you:\n"
-        f"{result['Product Name']} - {formatted_price} - {result['Product Url']} - {result['Image']}"
+        f"{result['Product Name']} - {formatted_price} - {result['Image']}"
     )
 
     return response_text

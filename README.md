@@ -1,5 +1,14 @@
 # pulsarai
 
+> Your Ecommerce Shopping Assistant
+
+## Libraries used
+numpy
+pandas
+sklearn
+spacy
+nltk
+
 ## How To Use
 
 
@@ -18,3 +27,4 @@ flask run
 ```
 flask run
 ```
+

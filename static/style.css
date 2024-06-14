@@ -41,6 +41,8 @@ h1 {
 .bot-message {
     text-align: left;
     color: green;
+    width: 50%;
+    background-color: aquamarine;
 }
 
 input[type="text"] {

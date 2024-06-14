@@ -33,19 +33,24 @@
                 return response.json();
             })
             .then(data => {
-                console.log('Received data:', data);
                 const botMessageDiv = document.createElement("div");
                 botMessageDiv.classList.add("message", "bot-message");
-                botMessageDiv.textContent = data.response;
-                pattern =  /https:\/\/images-na\.ssl-images-amazon\.com[^\s]+/;
-                match = data.response.match(pattern); 
+                botMessageDiv.textContent = "";
 
+                const pattern = /https:\/\/images-na\.ssl-images-amazon\.com[^\s]+/;
+                const match = data.response.match(pattern);
+                const textContentWithoutImage = data.response.replace(pattern, "").trim();
+                if (textContentWithoutImage) {
+                    botMessageDiv.appendChild(document.createTextNode(textContentWithoutImage));
+                }
                 if (match) {
                     const imageElement = document.createElement("img");
-                    imageElement.src = match[0];
-                    imageElement.alt = "Image";
+                    imageElement.src = match[0]; 
+                    imageElement.alt = "Image";  
+                
                     botMessageDiv.appendChild(imageElement);
                 }
+
                 chatBox.appendChild(botMessageDiv);
             })
             .catch(error => {
