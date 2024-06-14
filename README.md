@@ -3,11 +3,11 @@
 > Your Ecommerce Shopping Assistant
 
 ## Libraries used
-numpy
-pandas
-sklearn
-spacy
-nltk
+- numpy
+- pandas
+- sklearn
+- spacy
+- nltk
 
 ## How To Use
 
