@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 from search import search_products
 from processdata import tfidf_matrix, vectorizer, df
+from detectprice import detect_price_request
 
 app = Flask(__name__)
 
@@ -14,12 +15,14 @@ def main():
 def search():    
     user_input = request.args.get('msg')
     app.logger.info(f"Received user input: {user_input}")
-    result = search_products(user_input, tfidf_matrix, vectorizer, df)
 
-    response_text = f"Top result for you :\n{result['Product Name']} - {result['Selling Price']} - {result['Product Url']} - {result['Image']}"
+    price_request, price = detect_price_request(user_input)
+    if price_request:
+        result = search_products(user_input, tfidf_matrix, vectorizer, df, price)
+    else:
+        result = search_products(user_input, tfidf_matrix, vectorizer, df )
 
-    app.logger.info(f"Response: {response_text}")
-    return jsonify(response=response_text)
+    return jsonify(response=result)
 
 
 if __name__ == "__main__":

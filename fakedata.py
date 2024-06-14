@@ -1,6 +1,6 @@
 data = [
-    ("I want something cheaper than $50", True),
-    ("Can you find me a product under $30?", True),
-    ("I'm looking for a premium product", False),
-    ("What's the price range for these items?", False)
+    ("i want something cheaper than $50", True),
+    ("find me a product under $30?", True),
+    ("i am looking for a premium product", False),
+    ("whats the price range for these items?", False)
 ]

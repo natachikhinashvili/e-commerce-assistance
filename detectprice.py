@@ -2,6 +2,7 @@ import spacy
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from fakedata import data
+import re
 
 nlp = spacy.load("en_core_web_sm")
 
@@ -31,10 +32,3 @@ def detect_price_request(user_input):
         return prediction[0] == True, price
     else:
         return False, None
-        
-user_input = input("What are you looking for? ")
-price_request, price = detect_price_request(user_input)
-if price_request:
-    print(f"User wants a product within the specified price range of ${price}.")
-else:
-    print("User does not want a product within the specified price range.")
