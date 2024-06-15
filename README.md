@@ -4,6 +4,7 @@
 
 ## Preview
 ![preview](./aipreview.png)
+![preview](./aipreview2.png)
 
 ## Libraries used
 - numpy
@@ -21,6 +22,10 @@
 sudo apt-get install python3-pip
 sudo apt-get install python3-flask
 pip install scikit-learn
+pip install spacy
+pip install ntlk
+pip install pandas
+pip install numpy
 pip install torch
 pip install transformers
 flask run
