@@ -29,4 +29,4 @@ def search_products(query, tfidf_matrix, vectorizer, df, pricerange=float('inf')
         f"{result['Product Name']} - {formatted_price} - {result['Image']}"
     )
 
-    return response_text
+    return response_text, result['Product Name'], result
