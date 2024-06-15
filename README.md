@@ -12,7 +12,6 @@
 - spacy
 - nltk
 - transformers
-- 
 
 ## How To Use
 
