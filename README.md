@@ -1,4 +1,4 @@
-# pulsarai
+# Ecommerce Assistant
 
 > Your Ecommerce Shopping Assistant
 
